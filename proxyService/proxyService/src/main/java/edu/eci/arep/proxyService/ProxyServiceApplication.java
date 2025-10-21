@@ -13,7 +13,7 @@ import java.net.URL;
 public class ProxyServiceApplication {
 
 	private static final String USER_AGENT = "Mozilla/5.0";
-	private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
+	private static final String GET_URL = "http://localhost:8080";
 
 	public static void main(String[] args) throws IOException {
 		URL obj = new URL(GET_URL);

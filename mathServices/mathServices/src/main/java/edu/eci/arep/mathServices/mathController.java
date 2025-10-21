@@ -11,18 +11,29 @@ import java.lang.reflect.Array;
 public class mathController {
 
     @GetMapping("/linearSearch")
-    public int linearSearch(@RequestParam int[] list, int value){
+    public String linearSearch(@RequestParam int[] list, int value){
+        int index = -1;
+        String strList = listToString(list);
         for (int i = 0; i < list.length; i++){
             if (list[i] == value){
-                return i;
+                index = i;
             }
         }
-        return -1;
+        return String.format(
+                "{ \"operation\": \"%s\", \"inputList\": \"%s\", \"value\": \"%s\", \"output\": \"%s\" }",
+                "linearSearch", strList, value, index
+        );
+
     }
 
     @GetMapping("/binarySearch") //Ordenado
-    public int binarySearch(@RequestParam int[] list, int value){
-        return binarySearchImpl(list, value);
+    public String binarySearch(@RequestParam int[] list, int value){
+        int index = binarySearchImpl(list, value);
+        String strList = listToString(list);
+        return String.format(
+                "{ \"operation\": \"%s\", \"inputList\": \"%s\", \"value\": \"%s\", \"output\": \"%s\" }",
+                "binarySearch", strList, value, index
+        );
     }
 
     private int binarySearchImpl(int [] list, int value){
@@ -48,5 +59,13 @@ public class mathController {
             newList[i] = list[i];
         }
         return newList;
+    }
+
+    private String listToString(int [] list){
+        String strList = "";
+        for (int i = 0; i < list.length; i++){
+            strList = strList + list[i] + ",";
+        }
+        return strList;
     }
 }
