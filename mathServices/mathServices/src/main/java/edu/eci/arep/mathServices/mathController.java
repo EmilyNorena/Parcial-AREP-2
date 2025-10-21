@@ -50,7 +50,6 @@ public class mathController {
             } else{
                 binarySearchImpl(subList(list, 0, midIndex - 1), value);
             }
-            return -1;
         }
         return -1;
     }
