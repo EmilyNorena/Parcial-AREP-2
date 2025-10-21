@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Operations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<h1>Linear Search</h1>
+<form action="/linearSearch">
+    <label for="list1">List:</label><br>
+    <input id="list1" name="list" value="10,20,30,40"><br><br>
+    <label for="value1">Value:</label><br>
+    <input id="value1" name="value" value="10"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsg1"></div>
+<script>
+    function loadGetMsg() {
+        let listVar = document.getElementById("list1").value;
+        let valueVar = document.getElementById("value1").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            document.getElementById("getrespmsg1").innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "http://54.90.87.68:8080/linearSearch?list" + listVar + "&value" + valueVar);
+        xhttp.send();
+    }
+</script>
+
+<h1>Binary Search</h1>
+<form action="/binarySearch">
+    <label for="list2">List:</label><br>
+    <input id="list2" name="list" value="10,20,30,40"><br><br>
+    <label for="value2">Value:</label><br>
+    <input id="value2" name="value" value="10"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsg2"></div>
+<script>
+    function loadGetMsg() {
+        let listVar = document.getElementById("list1").value;
+        let valueVar = document.getElementById("value2").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            document.getElementById("getrespmsg2").innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "http://54.90.87.68:8080/linearSearch?list" + listVar + "&value" + valueVar);
+        xhttp.send();
+    }
+</script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 package edu.eci.arep.mathServices;
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.lang.reflect.Array;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class mathController {
 
     @GetMapping("/linearSearch")
@@ -53,10 +55,11 @@ public class mathController {
         return -1;
     }
 
-    private int[] subList(int[] list, int start, int end){
-        int[] newList = null;
-        for (int i = 0; i <= end; i++){
-            newList[i] = list[i];
+    private int[] subList(int[] list, int start, int end) {
+        int newSize = end - start + 1;
+        int[] newList = new int[newSize];
+        for (int i = start; i <= end; i++) {
+            newList[i - start] = list[i];
         }
         return newList;
     }
